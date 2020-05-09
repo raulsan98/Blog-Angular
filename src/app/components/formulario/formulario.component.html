@@ -1,0 +1,43 @@
+<app-slider [titleSlider]="'FORMULARIO'"></app-slider>
+
+<div class="center">
+
+    <section id="content">
+
+
+<h1 class="subheader">Formulario</h1>
+<form class="mid-form" #useForm='ngForm' (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" #nombre='ngModel' [(ngModel)]="user.nombre" required />
+        <small *ngIf="!nombre.valid && nombre.touched"> Campo Requerido, El nombre no es valido </small>
+    </div>
+
+    <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" #apellidos='ngModel' [(ngModel)]="user.apellidos"required/>
+        <small *ngIf="!apellidos.valid && apellidos.touched"> Campo Requerido, El apellidos no es valido </small>
+    </div>
+
+    <div class="form-group">
+        <label for="bio">Biografia</label>
+        <textarea name="bio" #bio='ngModel' [(ngModel)]="user.bio" required></textarea>
+        <small *ngIf="!bio.valid && bio.touched"> Campo Requerido, La Biografía no es valido </small>
+    </div>
+
+    <div class="form-group radibuttons">
+        <input type="radio" name="genero" value="hombre" #genero='ngModel' [(ngModel)]="user.genero" required/> Hombre 
+        <input type="radio" name="genero" value="mujer" #genero='ngModel' [(ngModel)]="user.genero"required/> Mujer 
+        <input type="radio" name="genero" value="otro" #genero='ngModel' [(ngModel)]="user.genero"required/> Otro
+        <small *ngIf="!genero.valid && genero.touched"> Campo Requerido, El genero no es valido </small>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <input type="submit" value="Enviar" class="btn btn-success" [disabled]='useForm.invalid' />
+
+</form>
+</section>
+<app-sidebar></app-sidebar>
+
+</div>
